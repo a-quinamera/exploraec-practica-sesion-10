@@ -1,0 +1,20 @@
+# Flutter/Dart estándar
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+android/local.properties
+ios/Flutter/Generated.xcconfig
+
+# Firebase / secretos — nunca se suben
+google-services.json
+GoogleService-Info.plist
+.env
+
+# Secretos y configuración local del agente
+.env
+.claude/settings.local.json
+CLAUDE.local.md
