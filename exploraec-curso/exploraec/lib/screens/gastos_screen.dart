@@ -37,7 +37,8 @@ class GastosScreen extends GetView<GastosController> {
     return Scaffold(
       appBar: AppBar(
         title: Obx(
-            () => Text('${'gastos'.tr} (${controller.totalEnServidor.value})')),
+          () => Text('${'gastos'.tr} (${controller.totalEnServidor.value})'),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -57,33 +58,40 @@ class GastosScreen extends GetView<GastosController> {
               }
               if (valor == 'error_async') {
                 Future<void>.delayed(
-                    Duration.zero,
-                    () => throw StateError(
-                        'Fallo asíncrono provocado a propósito'));
+                  Duration.zero,
+                  () =>
+                      throw StateError('Fallo asíncrono provocado a propósito'),
+                );
               }
               // Por qué: pantalla opcional con las licencias de los paquetes que usa la app.
               if (valor == 'acerca') {
                 showLicensePage(
-                    context: context,
-                    applicationName: 'ExploraEC',
-                    applicationVersion: '1.0.0');
+                  context: context,
+                  applicationName: 'ExploraEC',
+                  applicationVersion: '1.0.0',
+                );
               }
             },
             itemBuilder: (context) => [
               const PopupMenuItem(
-                  value: 'password', child: Text('Cambiar contraseña')),
+                value: 'password',
+                child: Text('Cambiar contraseña'),
+              ),
               const PopupMenuItem(value: 'salir', child: Text('Cerrar sesión')),
               const PopupMenuItem(value: 'acerca', child: Text('Acerca de')),
               if (kDebugMode) ...const [
                 PopupMenuItem(
-                    value: 'invalidar',
-                    child: Text('Invalidar token (solo práctica)')),
+                  value: 'invalidar',
+                  child: Text('Invalidar token (solo práctica)'),
+                ),
                 PopupMenuItem(
-                    value: 'error_pantalla',
-                    child: Text('Error de pantalla (solo práctica)')),
+                  value: 'error_pantalla',
+                  child: Text('Error de pantalla (solo práctica)'),
+                ),
                 PopupMenuItem(
-                    value: 'error_async',
-                    child: Text('Error asíncrono (solo práctica)')),
+                  value: 'error_async',
+                  child: Text('Error asíncrono (solo práctica)'),
+                ),
               ],
             ],
           ),
@@ -106,7 +114,8 @@ class GastosScreen extends GetView<GastosController> {
         }
         if (controller.gastos.isEmpty) {
           return const EmptyView(
-              mensaje: 'Aún no registras gastos en este viaje');
+            mensaje: 'Aún no registras gastos en este viaje',
+          );
         }
         return Column(
           children: [
@@ -114,7 +123,8 @@ class GastosScreen extends GetView<GastosController> {
               MaterialBanner(
                 leading: const Icon(Icons.cloud_off),
                 content: Text(
-                    'Sin conexión — gastos guardados (última sincronización: ${controller.ultimaSincronizacion})'),
+                  'Sin conexión — gastos guardados (última sincronización: ${controller.ultimaSincronizacion})',
+                ),
                 actions: [
                   TextButton(
                     onPressed: controller.cargarGastos,
@@ -126,26 +136,35 @@ class GastosScreen extends GetView<GastosController> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8),
-                    child: ChoiceChip(
-                      label: const Text('Todas'),
-                      selected: controller.categoriaActiva == null,
-                      onSelected: (_) => controller.filtrarPorCategoria(null),
-                    ),
-                  ),
-                  for (final categoria in controller.categoriasDisponibles)
+                child: Row(
+                  children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 8),
                       child: ChoiceChip(
-                        label: Text(categoria),
-                        selected: controller.categoriaActiva == categoria,
-                        onSelected: (_) =>
-                            controller.filtrarPorCategoria(categoria),
+                        label: const Text('Todas'),
+                        selected: controller.categoriaActiva == null,
+                        onSelected: (_) => controller.filtrarPorCategoria(null),
                       ),
                     ),
-                ]),
+                    for (final categoria in controller.categoriasDisponibles)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: ChoiceChip(
+                          label: Text(categoria),
+                          selected: controller.categoriaActiva == categoria,
+                          onSelected: (_) =>
+                              controller.filtrarPorCategoria(categoria),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: Text(
+                'Gastos visibles: ${controller.gastosFiltrados.length} de ${controller.gastos.length}',
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
             Expanded(
@@ -153,7 +172,8 @@ class GastosScreen extends GetView<GastosController> {
                 onRefresh: controller.cargarGastos,
                 child: controller.gastosFiltrados.isEmpty
                     ? const EmptyView(
-                        mensaje: 'No hay gastos en esta categoría')
+                        mensaje: 'No hay gastos en esta categoría',
+                      )
                     : _buildLista(context, controller.gastosFiltrados),
               ),
             ),
@@ -177,8 +197,10 @@ class GastosScreen extends GetView<GastosController> {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(g.monto.toStringAsFixed(2),
-                  style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                g.monto.toStringAsFixed(2),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               IconButton(
                 icon: const Icon(Icons.delete_outline),
                 tooltip: 'Eliminar',
@@ -201,11 +223,13 @@ class GastosScreen extends GetView<GastosController> {
         content: const Text('Esta acción no se puede deshacer.'),
         actions: [
           TextButton(
-              onPressed: () => Navigator.pop(dialogo, false),
-              child: const Text('Cancelar')),
+            onPressed: () => Navigator.pop(dialogo, false),
+            child: const Text('Cancelar'),
+          ),
           FilledButton(
-              onPressed: () => Navigator.pop(dialogo, true),
-              child: const Text('Eliminar')),
+            onPressed: () => Navigator.pop(dialogo, true),
+            child: const Text('Eliminar'),
+          ),
         ],
       ),
     );
