@@ -1,0 +1,14 @@
+{
+  "fecha": "2026-10-18",
+  "pr": "https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1",
+  "estado_pr": "merged",
+  "checks_pr_aprobados": 2,
+  "commit_integrado": "6b15757a86301d6d82419af6f89b4c14116cbfc0",
+  "pruebas_locales_aprobadas": 33,
+  "analisis_local": "sin problemas",
+  "ci_roja": "https://github.com/a-quinamera/exploraec-practica-sesion-10/actions/runs/39154336720",
+  "resultado_ci_roja": "31 aprobadas, 1 fallida deliberadamente",
+  "apk_manual": "https://github.com/a-quinamera/exploraec-practica-sesion-10/actions/runs/39154125675",
+  "resultado_apk_manual": "success; artefacto, no Release",
+  "android_instalado_verificado": false
+}
