@@ -32,14 +32,14 @@ Si cambias main(), detén y vuelve a iniciar Flutter. Un hot reload no vuelve a 
 
 ## Comprobaciones
 
-En Testing de Antigravity, Run All Tests ejecuta 32 pruebas. El panel cuenta además cuatro operaciones de preparación de las suites y muestra 36/36. Problems debe quedar sin problemas. En Gastos, los chips se calculan a partir de las categorías que tienen gastos; Todas restablece la lista, y el filtro no modifica datos ni hace peticiones HTTP.
+En Testing de Antigravity, Run All Tests ejecuta la suite. La verificación actual por consola aprobó 33 pruebas; el panel puede contar también operaciones de preparación. Problems debe quedar sin problemas. En Gastos, los chips se calculan a partir de las categorías que tienen gastos; Todas restablece la lista, y el filtro no modifica datos ni hace peticiones HTTP.
 
 El menú de práctica incluye errores provocados a propósito y Acerca de con licencias. Las opciones de fallo solo aparecen en debug. El arranque usa una zona protegida para capturar también errores asíncronos en Flutter Web; el framework, la zona y PlatformDispatcher registran mediante ReporteErrores. Nunca se imprime la excepción sin depurar antes de ocultar Bearer/JWT.
 
-## Repositorio y comprobaciones pendientes
+## Actividad contrastada con la grabación
 
-El futuro repositorio debe contener el contenido descomprimido de esta carpeta, con .github en su raíz. Los ZIP son para la plataforma del curso. No subas ZIP, .env, bases locales, credenciales, build ni node_modules a GitHub.
+[Informe de la actividad](ACTIVIDAD-SESION-10.md): comparación con las diapositivas, respuestas a las dinámicas, auditoría y evidencias de CI verde/roja y del backend real. La mejora del contador del filtro se integró mediante el [PR #1](https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1). Se verificaron 33 tests y análisis sin problemas.
 
-Después de publicar habrá que comprobar CI, comprobar un fallo rojo deliberado y restaurarlo, revisar e integrar el filtro mediante un pull request, crear la etiqueta v1.0.0, comprobar Release APK en verde y descargar/instalar/probar el APK en el emulador Android. Estos resultados aún no existen. Los workflows del curso usan ubuntu-latest en GitHub; el desarrollo local se hizo en Windows.
+El repositorio contiene fuentes descomprimidas y .github en su raíz. No se publican ZIP, .env, bases locales, credenciales, build ni node_modules. La validación del Release etiquetado y de Android se mantiene explícita en el informe; la compilación manual de un artefacto no se presenta como un Release.
 
-La configuración .claude/settings.json es material de referencia específico de Claude Code. No aplica permisos a Antigravity. AGENTS.md contiene las reglas propias y las restricciones de trabajo. El workspace activa formatOnSave; no se ha configurado ni afirmado un hook PostToolUse de Claude.
+La configuración .claude/settings.json es referencia de Claude Code y no configura los permisos de Antigravity. AGENTS.md incluye las reglas propias; el workspace activa formatOnSave. El desarrollo local se realizó en Windows y los workflows usan Ubuntu remoto en GitHub Actions.

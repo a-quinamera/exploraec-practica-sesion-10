@@ -1,0 +1,68 @@
+00:00 +0: loading PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart
+00:00 +0: PROYECTO/exploraec-curso/exploraec/test/sesion_08_test.dart: (setUpAll)
+00:00 +0: PROYECTO/exploraec-curso/exploraec/test/sesion_08_test.dart: Paso 2 — el interceptor agrega «Authorization: Bearer» a cada petición
+00:00 +1: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +2: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +3: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +4: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +5: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +6: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +7: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +8: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +9: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +10: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +11: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +12: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +13: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +14: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +15: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +16: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +16: PROYECTO/exploraec-curso/exploraec/test/sesion_10_test.dart: registrar() guarda el error limpio y conserva solo los 20 más recientes
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 0 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 1 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 2 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 3 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 4 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 5 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 6 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 7 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 8 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 9 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 10 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 11 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 12 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 13 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 14 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 15 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 16 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 17 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 18 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 19 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 20 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 21 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 22 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 23 Bearer ***
+[ExploraEC] error no controlado -> StateError: Bad state: fallo 24 Bearer ***
+00:00 +17: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +17: PROYECTO/exploraec-curso/exploraec/test/sesion_10_test.dart: Paso 2 — instalar() reemplaza la pantalla roja por la vista amistosa y absorbe los errores asíncronos
+[ExploraEC] error no controlado -> StateError: Bad state: x
+00:00 +18: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +19: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +20: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +21: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +22: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:00 +23: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:01 +24: PROYECTO/exploraec-curso/exploraec/test/filtro_gastos_test.dart: Elegir comida muestra solo sus gastos y no consulta al backend
+00:01 +25: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 4 — preguntar muestra la respuesta del proxy
+00:01 +26: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 4 — preguntar muestra la respuesta del proxy
+00:02 +27: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 4 — preguntar muestra la respuesta del proxy
+00:02 +28: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 4 — preguntar muestra la respuesta del proxy
+00:02 +29: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 4 — preguntar muestra la respuesta del proxy
+00:02 +29: PROYECTO/exploraec-curso/exploraec/test/sesion_10_test.dart: Paso 3 — una pantalla que falla muestra la vista amistosa, no la roja
+[ExploraEC] error no controlado -> StateError: Bad state: Fallo provocado a propósito para la práctica
+[ExploraEC] error no controlado -> FlutterError: The value of ErrorWidget.builder was changed by the test.
+00:02 +30: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 4 — preguntar muestra la respuesta del proxy
+00:02 +31: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 5 — una acción propuesta pide confirmación y, al aceptar, crea el gasto
+00:04 +32: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: Paso 5 — cancelar la acción no crea ningún gasto
+00:05 +33: PROYECTO/exploraec-curso/exploraec/test/sesion_09_test.dart: (tearDownAll)
+00:06 +33: All tests passed!
