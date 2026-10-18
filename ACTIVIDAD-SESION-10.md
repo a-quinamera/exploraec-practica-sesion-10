@@ -28,7 +28,7 @@ Una prueba de widget recorre esas tres selecciones, comprueba los conteos, conse
 
 - Análisis local de lib y test: sin problemas.
 - Suite local final: **33 pruebas aprobadas**.
-- Compilación web de la base de sesión 10: correcta; el contador se verificó primero con la prueba de widget y la CI.
+- Compilación web final con el contador: correcta; verificada también en Brave y en el APK del Release.
 - Pull request integrado: https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1 (dos checks aprobados antes de integrar).
 - Commit integrado: `6b15757a86301d6d82419af6f89b4c14116cbfc0`.
 
@@ -40,11 +40,11 @@ Demostración roja: https://github.com/a-quinamera/exploraec-practica-sesion-10/
 
 En una rama aislada se cambió el dato de la prueba de contraseña corta de tres a ocho caracteres. La aplicación aceptó esa longitud y no mostró el mensaje reservado a contraseñas cortas; la expectativa quedó deliberadamente incumplida. La prueba dirigida falló también en local. En Actions, el paso Ejecutar las pruebas terminó con **31 aprobadas y 1 fallida**, identificando ese mismo caso. No se desactivaron pruebas ni se integró el dato roto en main.
 
-El historial de la ejecución permite revisar la evidencia aunque se elimine la rama de demostración. Su limpieza se realizará después de conservar la evidencia, sin modificar el código correcto de main.
+La rama remota de demostración se eliminó con autorización del estudiante después de conservar la evidencia. La ejecución roja, el commit y la copia local siguen disponibles; main conserva el código correcto.
 
 ## Comprobación real en Brave
 
-Se utilizó una cuenta local de pruebas con seis gastos ficticios, sin modificar cuentas ajenas. Comida mostró dos registros y transporte uno; Todas restauró los seis. El fallo de widget mostró «Esta pantalla tuvo un problema», sin traza técnica, y el regreso permitió continuar.
+Se utilizó una cuenta local de pruebas con seis gastos ficticios, sin modificar cuentas ajenas. El contador final mostró 6 de 6, 2 de 6 para comida, 1 de 6 para transporte y nuevamente 6 de 6 en Todas. El fallo de widget mostró «Esta pantalla tuvo un problema», sin traza técnica, y el regreso permitió continuar. También se abrió Acerca de y su lista de licencias.
 
 Se detuvo únicamente gastos-backend desde Docker Desktop. /health dejó de responder y Recargar mantuvo la lista con el aviso «Sin conexión — gastos guardados». Al reiniciar el mismo contenedor, /health volvió a indicar status/db ok y Reintentar recuperó la lista sin el aviso de caché. El backend quedó encendido.
 
@@ -63,11 +63,15 @@ Las pruebas incluyen la limpieza de Bearer/JWT y una regresión que evita imprim
 3. Antes de aceptar código de una persona o de un agente se revisa el diff, se comprueba el alcance, se auditan secretos y se ejecutan análisis y pruebas. La CI aporta una verificación independiente.
 4. Para demostrar persistencia local se muestran datos ya cargados con el backend detenido, el aviso de caché y la recuperación posterior; es evidencia observable, no solo una afirmación.
 
-## APK y comprobación nativa: estado en curso
+## Release y comprobación nativa
 
 Compilación manual correcta: https://github.com/a-quinamera/exploraec-practica-sesion-10/actions/runs/39154125675 . Generó el artefacto exploraec-apk; al ser workflow_dispatch, no creó un Release. Este resultado corresponde a la base previa al contador y no sustituye la publicación etiquetada del código integrado.
 
-Se preparó v1.0.0 sobre el commit integrado. Falta comprobar su publicación etiquetada y descargar/instalar/probar ese APK. El emulador iniciado desde el entorno de comandos no obtuvo acceso al hipervisor (0x80070005); el arranque por software no completó la disponibilidad por ADB en la comprobación inicial. No se cambiaron funciones de seguridad de Windows. El acceso a .android se concedió solo para los archivos operativos del emulador.
+La ejecución etiquetada terminó correctamente: https://github.com/a-quinamera/exploraec-practica-sesion-10/actions/runs/39160341215 . Actions analizó, probó, compiló y publicó el APK del commit integrado `6b15757` en https://github.com/a-quinamera/exploraec-practica-sesion-10/releases/tag/v1.0.0 . Los commits posteriores de main documentan sus resultados; no cambian el código de ese APK.
+
+Se descargó `app-release.apk` (53,7 MB) y su SHA-256 coincidió con el digest publicado: `4b2a2294fb0924cb51edb4841f91c74da8aa72229aae529339e62770bbe643fc`. ADB confirmó la instalación de `com.example.exploraec`, versión 1.0.0, sin la bandera DEBUGGABLE. Se abrió el APK y se comprobó la conexión con el backend real en `http://10.0.2.2:8000`, usando gastos ficticios. Las capturas y el informe de paquete están en `Evidencias/Validacion-2026-10-18`.
+
+El inicio del emulador por consola había fallado con 0x80070005. Finalmente arrancó mediante Flutter: Launch Emulator en Antigravity, sin cambiar la seguridad de Windows. El estudiante completó la escritura del inicio de sesión porque el emulador no recibía texto del control automático.
 
 ## Qué se entrega en Moodle
 

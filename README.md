@@ -40,6 +40,8 @@ El menú de práctica incluye errores provocados a propósito y Acerca de con li
 
 [Informe de la actividad](ACTIVIDAD-SESION-10.md): comparación con las diapositivas, respuestas a las dinámicas, auditoría y evidencias de CI verde/roja y del backend real. La mejora del contador del filtro se integró mediante el [PR #1](https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1). Se verificaron 33 tests y análisis sin problemas.
 
-El repositorio contiene fuentes descomprimidas y .github en su raíz. No se publican ZIP, .env, bases locales, credenciales, build ni node_modules. La validación del Release etiquetado y de Android se mantiene explícita en el informe; la compilación manual de un artefacto no se presenta como un Release.
+El repositorio contiene fuentes descomprimidas y .github en su raíz. No se publican ZIP, .env, bases locales, credenciales, build ni node_modules. El [Release v1.0.0 con APK](https://github.com/a-quinamera/exploraec-practica-sesion-10/releases/tag/v1.0.0) se generó desde el código integrado. Se verificó su SHA-256, instalación y funcionamiento de gastos y filtros en Android contra el backend real. Consulta el informe para las evidencias y el alcance de cada comprobación.
+
+Para ejecutar el APK en el emulador Android, el backend debe estar activo en el PC: `10.0.2.2:8000` apunta al host. En un teléfono físico se debe compilar con la dirección accesible del servidor; localhost del teléfono no es el PC. El APK del curso utiliza la firma de desarrollo del workflow y no es una publicación en Google Play.
 
 La configuración .claude/settings.json es referencia de Claude Code y no configura los permisos de Antigravity. AGENTS.md incluye las reglas propias; el workspace activa formatOnSave. El desarrollo local se realizó en Windows y los workflows usan Ubuntu remoto en GitHub Actions.
