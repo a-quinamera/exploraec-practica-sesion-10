@@ -1,0 +1,9 @@
+Browser tab: 559960993, Title: "ExploraEC", URL: "http://127.0.0.1:8186/".
+0 AXWebArea ExploraEC, URL: 127.0.0.1:8186/
+	1 container
+		2 container Menú emergente Algo salió mal Ya registramos el problema. Puedes seguir usando la app.
+			3 container flt-semantic-node-1
+				4 container Description: Menú emergente, ID: flt-semantic-node-90
+				13 text Algo salió mal Ya registramos el problema. Puedes seguir usando la app.
+
+The focused UI element is 2 container Menú emergente Algo salió mal Ya registramos el problema. Puedes seguir usando la app.

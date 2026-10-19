@@ -32,13 +32,13 @@ Si cambias main(), detén y vuelve a iniciar Flutter. Un hot reload no vuelve a 
 
 ## Comprobaciones
 
-En Testing de Antigravity, Run All Tests ejecuta la suite. La verificación actual por consola aprobó 33 pruebas; el panel puede contar también operaciones de preparación. Problems debe quedar sin problemas. En Gastos, los chips se calculan a partir de las categorías que tienen gastos; Todas restablece la lista, y el filtro no modifica datos ni hace peticiones HTTP.
+En Testing de Antigravity, Run All Tests ejecuta la suite. La verificación actual por consola aprobó 34 pruebas; el panel puede contar también operaciones de preparación. Problems debe quedar sin problemas. En Gastos, los chips se calculan a partir de las categorías que tienen gastos; Todas restablece la lista, y el filtro no modifica datos ni hace peticiones HTTP.
 
 El menú de práctica incluye errores provocados a propósito y Acerca de con licencias. Las opciones de fallo solo aparecen en debug. El arranque usa una zona protegida para capturar también errores asíncronos en Flutter Web; el framework, la zona y PlatformDispatcher registran mediante ReporteErrores. Nunca se imprime la excepción sin depurar antes de ocultar Bearer/JWT.
 
 ## Actividad contrastada con la grabación
 
-[Informe de la actividad](ACTIVIDAD-SESION-10.md): comparación con las diapositivas, respuestas a las dinámicas, auditoría y evidencias de CI verde/roja y del backend real. La mejora del contador del filtro se integró mediante el [PR #1](https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1). Se verificaron 33 tests y análisis sin problemas.
+[Informe de la actividad](ACTIVIDAD-SESION-10.md): comparación con las diapositivas, respuestas a las dinámicas, auditoría y evidencias de CI verde/roja y del backend real. La mejora del contador del filtro se integró mediante el [PR #1](https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1). Se verificaron 34 tests y análisis sin problemas.
 
 El repositorio contiene fuentes descomprimidas y .github en su raíz. No se publican ZIP, .env, bases locales, credenciales, build ni node_modules. El [Release v1.0.0 con APK](https://github.com/a-quinamera/exploraec-practica-sesion-10/releases/tag/v1.0.0) se generó desde el código integrado. Se verificó su SHA-256, instalación y funcionamiento de gastos y filtros en Android contra el backend real. Consulta el informe para las evidencias y el alcance de cada comprobación.
 

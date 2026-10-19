@@ -4,7 +4,7 @@
   "estado_pr": "merged",
   "checks_pr_aprobados": 2,
   "commit_integrado": "6b15757a86301d6d82419af6f89b4c14116cbfc0",
-  "pruebas_locales_aprobadas": 33,
+  "pruebas_locales_aprobadas": 34,
   "analisis_local": "sin problemas",
   "ci_roja": "https://github.com/a-quinamera/exploraec-practica-sesion-10/actions/runs/39154336720",
   "resultado_ci_roja": "31 aprobadas, 1 fallida deliberadamente",
@@ -16,6 +16,7 @@
   "resultado_ci_release": "success",
   "apk_sha256": "4b2a2294fb0924cb51edb4841f91c74da8aa72229aae529339e62770bbe643fc",
   "android_filtros": "Todas 6/6; comida 2/6; transporte 1/6; Todas 6/6",
-  "snackbar_observado": false,
-  "rama_roja_remota": "eliminada con autorizacion; ejecucion y copia local conservadas"
+  "snackbar_observado": true,
+  "rama_roja_remota": "eliminada con autorizacion; ejecucion y copia local conservadas",
+  "cierre_aviso": "Brave: aviso genérico capturado y filtro posterior operativo; regresión del manejador aprobada; lib sin cambios"
 }

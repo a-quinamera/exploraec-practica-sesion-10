@@ -23,14 +23,19 @@ class _Servidor implements HttpClientAdapter {
   final peticiones = <String>[];
 
   @override
-  Future<ResponseBody> fetch(RequestOptions o, Stream<Uint8List>? cuerpo,
-      Future<void>? cancelar) async {
+  Future<ResponseBody> fetch(
+    RequestOptions o,
+    Stream<Uint8List>? cuerpo,
+    Future<void>? cancelar,
+  ) async {
     peticiones.add('${o.method} ${o.path}');
     return ResponseBody.fromString(
-        jsonEncode({'detail': 'no previsto en la prueba'}), 404,
-        headers: {
-          Headers.contentTypeHeader: ['application/json']
-        });
+      jsonEncode({'detail': 'no previsto en la prueba'}),
+      404,
+      headers: {
+        Headers.contentTypeHeader: ['application/json'],
+      },
+    );
   }
 
   @override
@@ -43,9 +48,12 @@ class _Servidor implements HttpClientAdapter {
   Get.testMode = true;
   FlutterSecureStorage.setMockInitialValues({});
   final servidor = _Servidor();
-  Get.put(ApiClient(
+  Get.put(
+    ApiClient(
       dio: Dio(BaseOptions(baseUrl: 'http://prueba'))
-        ..httpClientAdapter = servidor));
+        ..httpClientAdapter = servidor,
+    ),
+  );
   return (servidor: servidor, auth: Get.put(AuthController()));
 }
 
@@ -68,37 +76,45 @@ void main() {
   test('limpiar() quita los tokens y las cabeceras Bearer de un mensaje', () {
     const jwt = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQGIuY29tIn0.firma123';
     final limpio = ReporteErrores.limpiar(
-        'fallo con Authorization: Bearer $jwt y token $jwt');
+      'fallo con Authorization: Bearer $jwt y token $jwt',
+    );
     expect(limpio, isNot(contains('eyJ')));
     expect(limpio, contains('Bearer ***'));
   });
 
   test(
-      'registrar() guarda el error limpio y conserva solo los 20 más recientes',
-      () {
-    ReporteErrores.recientes.clear();
-    for (var i = 0; i < 25; i++) {
-      ReporteErrores.registrar(
-          StateError('fallo $i Bearer abc.def.ghi'), StackTrace.empty);
-    }
-    expect(ReporteErrores.recientes.length, 20);
-    expect(ReporteErrores.recientes.last, contains('fallo 24'));
-    expect(ReporteErrores.recientes.join(), isNot(contains('abc.def.ghi')));
-  });
+    'registrar() guarda el error limpio y conserva solo los 20 más recientes',
+    () {
+      ReporteErrores.recientes.clear();
+      for (var i = 0; i < 25; i++) {
+        ReporteErrores.registrar(
+          StateError('fallo $i Bearer abc.def.ghi'),
+          StackTrace.empty,
+        );
+      }
+      expect(ReporteErrores.recientes.length, 20);
+      expect(ReporteErrores.recientes.last, contains('fallo 24'));
+      expect(ReporteErrores.recientes.join(), isNot(contains('abc.def.ghi')));
+    },
+  );
 
   // ---- Paso 2: pasa cuando descomentas el bloque de `ReporteErrores.instalar()` ----
 
   test(
-      'Paso 2 — instalar() reemplaza la pantalla roja por la vista amistosa y absorbe los errores asíncronos',
-      () {
-    _restaurarManejadoresAlTerminar();
-    ReporteErrores.instalar();
-    expect(ErrorWidget.builder(FlutterErrorDetails(exception: StateError('x'))),
-        isA<ErrorPantallaView>());
-    expect(
+    'Paso 2 — instalar() reemplaza la pantalla roja por la vista amistosa y absorbe los errores asíncronos',
+    () {
+      _restaurarManejadoresAlTerminar();
+      ReporteErrores.instalar();
+      expect(
+        ErrorWidget.builder(FlutterErrorDetails(exception: StateError('x'))),
+        isA<ErrorPantallaView>(),
+      );
+      expect(
         PlatformDispatcher.instance.onError!(StateError('x'), StackTrace.empty),
-        isTrue);
-  });
+        isTrue,
+      );
+    },
+  );
 
   test('FlutterError oculta Bearer antes de imprimir el error', () {
     _restaurarManejadoresAlTerminar();
@@ -109,9 +125,11 @@ void main() {
       if (mensaje != null) salida.add(mensaje);
     };
     ReporteErrores.instalar();
-    FlutterError.onError!(FlutterErrorDetails(
-      exception: StateError('Bearer token_sintetico_prueba'),
-    ));
+    FlutterError.onError!(
+      FlutterErrorDetails(
+        exception: StateError('Bearer token_sintetico_prueba'),
+      ),
+    );
     expect(salida.join(), contains('Bearer ***'));
     expect(salida.join(), isNot(contains('token_sintetico_prueba')));
   });
@@ -122,39 +140,88 @@ void main() {
   // una persona, y comprueba lo que se ve. Estas tres no necesitan el backend ni
   // el emulador: usan un servidor falso.
   testWidgets(
-      'Paso 3 — sin sesión se ve el motivo y el botón para iniciar sesión',
-      (tester) async {
-    final montaje = _montar();
-    montaje.auth.avisoSesion.value =
-        'Tu sesión caducó, inicia sesión de nuevo.';
-    await tester.pumpWidget(const GetMaterialApp(home: SinSesionView()));
-    await tester.pump(const Duration(milliseconds: 50));
-    expect(
-        find.text('Tu sesión caducó, inicia sesión de nuevo.'), findsOneWidget);
-    expect(find.text('Iniciar sesión'), findsOneWidget);
-  });
+    'Paso 3 — sin sesión se ve el motivo y el botón para iniciar sesión',
+    (tester) async {
+      final montaje = _montar();
+      montaje.auth.avisoSesion.value =
+          'Tu sesión caducó, inicia sesión de nuevo.';
+      await tester.pumpWidget(const GetMaterialApp(home: SinSesionView()));
+      await tester.pump(const Duration(milliseconds: 50));
+      expect(
+        find.text('Tu sesión caducó, inicia sesión de nuevo.'),
+        findsOneWidget,
+      );
+      expect(find.text('Iniciar sesión'), findsOneWidget);
+    },
+  );
 
   testWidgets(
-      'Paso 3 — registrar con una contraseña corta se rechaza sin llamar al servidor',
-      (tester) async {
-    final montaje = _montar();
-    await tester.pumpWidget(const GetMaterialApp(home: RegisterScreen()));
-    await tester.enterText(find.byType(TextFormField).at(0), 'a@b.com');
-    await tester.enterText(find.byType(TextFormField).at(1), 'abc');
-    await tester.tap(find.widgetWithText(FilledButton, 'Crear cuenta'));
-    await tester.pump();
-    expect(find.text('La contraseña debe tener entre 8 y 72 caracteres'),
-        findsOneWidget);
-    expect(montaje.servidor.peticiones, isEmpty);
-  });
+    'Paso 3 — registrar con una contraseña corta se rechaza sin llamar al servidor',
+    (tester) async {
+      final montaje = _montar();
+      await tester.pumpWidget(const GetMaterialApp(home: RegisterScreen()));
+      await tester.enterText(find.byType(TextFormField).at(0), 'a@b.com');
+      await tester.enterText(find.byType(TextFormField).at(1), 'abc');
+      await tester.tap(find.widgetWithText(FilledButton, 'Crear cuenta'));
+      await tester.pump();
+      expect(
+        find.text('La contraseña debe tener entre 8 y 72 caracteres'),
+        findsOneWidget,
+      );
+      expect(montaje.servidor.peticiones, isEmpty);
+    },
+  );
 
   testWidgets(
-      'Paso 3 — una pantalla que falla muestra la vista amistosa, no la roja',
-      (tester) async {
+    'Paso 3 — una pantalla que falla muestra la vista amistosa, no la roja',
+    (tester) async {
+      _restaurarManejadoresAlTerminar();
+      ReporteErrores.instalar();
+      await tester.pumpWidget(const MaterialApp(home: PantallaConFallo()));
+      expect(find.byType(ErrorPantallaView), findsOneWidget);
+      expect(find.text('Esta pantalla tuvo un problema'), findsOneWidget);
+    },
+  );
+
+  testWidgets('el error asincrono avisa y permite seguir navegando', (
+    tester,
+  ) async {
+    Get.reset();
+    Get.testMode = false;
     _restaurarManejadoresAlTerminar();
+    addTearDown(() async {
+      Get.reset();
+    });
     ReporteErrores.instalar();
-    await tester.pumpWidget(const MaterialApp(home: PantallaConFallo()));
-    expect(find.byType(ErrorPantallaView), findsOneWidget);
-    expect(find.text('Esta pantalla tuvo un problema'), findsOneWidget);
+    await tester.pumpWidget(
+      GetMaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: FilledButton(
+              onPressed: () => PlatformDispatcher.instance.onError!(
+                StateError('detalle tecnico Bearer token_sintetico'),
+                StackTrace.empty,
+              ),
+              child: const Text('Provocar fallo'),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Provocar fallo'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 400));
+    expect(find.text('Algo salió mal'), findsOneWidget);
+    expect(
+      find.text('Ya registramos el problema. Puedes seguir usando la app.'),
+      findsOneWidget,
+    );
+    expect(find.textContaining('detalle tecnico'), findsNothing);
+    expect(ReporteErrores.recientes.last, isNot(contains('token_sintetico')));
+    await tester.pump(const Duration(seconds: 4));
+    await tester.pumpAndSettle();
+    expect(find.text('Provocar fallo'), findsOneWidget);
+    expect(tester.takeException(), isNull);
   });
 }

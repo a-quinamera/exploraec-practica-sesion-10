@@ -27,7 +27,7 @@ La lista filtrada no modificaba el encabezado con el total general. Se añadió 
 Una prueba de widget recorre esas tres selecciones, comprueba los conteos, conserva los tres registros y exige cero consultas al servidor falso. Antigravity también aplicó el formato Dart al guardar los dos archivos.
 
 - Análisis local de lib y test: sin problemas.
-- Suite local final: **33 pruebas aprobadas**.
+- Suite local final: **34 pruebas aprobadas**.
 - Compilación web final con el contador: correcta; verificada también en Brave y en el APK del Release.
 - Pull request integrado: https://github.com/a-quinamera/exploraec-practica-sesion-10/pull/1 (dos checks aprobados antes de integrar).
 - Commit integrado: `6b15757a86301d6d82419af6f89b4c14116cbfc0`.
@@ -48,7 +48,7 @@ Se utilizó una cuenta local de pruebas con seis gastos ficticios, sin modificar
 
 Se detuvo únicamente gastos-backend desde Docker Desktop. /health dejó de responder y Recargar mantuvo la lista con el aviso «Sin conexión — gastos guardados». Al reiniciar el mismo contenedor, /health volvió a indicar status/db ok y Reintentar recuperó la lista sin el aviso de caché. El backend quedó encendido.
 
-El fallo asíncrono se registró en el mismo canal central como un mensaje limpio de StateError. No se alcanzó a observar el snackbar en las capturas iniciales; esa observación no se presenta como verificada. No se publican contraseñas, JWT ni la base de datos de la cuenta de prueba.
+El fallo asíncrono se registró en el mismo canal central como un mensaje limpio de StateError. En la comprobación de cierre se observó y capturó el aviso «Algo salió mal. Ya registramos el problema. Puedes seguir usando la app.». Después se cambió el filtro a comida y la lista siguió respondiendo. La captura 18 y aviso-accesible.txt conservan la evidencia. No se publican contraseñas, JWT ni la base de datos de la cuenta de prueba.
 
 ## Auditoría de publicación
 
@@ -78,3 +78,7 @@ El inicio del emulador por consola había fallado con 0x80070005. Finalmente arr
 En el video, aproximadamente 1:01:54–1:03:19, el docente aclara que se pega **el enlace al repositorio**, tanto en prácticas como en el proyecto final. Un Word con ese enlace es alternativa si Moodle no permite pegar texto. No exige un informe separado ni una grabación del estudiante. El repositorio debe contener las fuentes y la evidencia necesaria para ejecutar y evaluar la actividad, incluido el Release con APK cuando se complete su validación.
 
 No se ha enviado ni marcado ninguna entrega en Moodle desde esta actividad.
+
+## Cierre del aviso asíncrono
+
+La prueba nueva simula el manejador de error con navegación activa, verifica el aviso genérico, comprueba que el detalle técnico y el token sintético no llegan a la interfaz y que el registro queda depurado. Las 34 pruebas y el análisis de lib/test pasaron. No se requirió modificar lib: el APK v1.0.0 conserva las mismas fuentes de la aplicación. Esta actualización añade cobertura y evidencia; no reemplaza el APK ni crea una versión artificial.
